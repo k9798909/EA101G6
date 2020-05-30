@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+
+
+
+        #comm{
+            border:solid 1px;
+            border-spacing:0px;
+            border-radius: 3px;
+            font-family: "Helvetica", "Arial";
+            margin:auto;
+            table-layout:fixed;
+            width: 880px;
+            height:60px;
+            
+        }
+        
+        #comm img{
+           width: 50px;
+           height: 50px;
+        }
+        
+         #comm th{
+            border:solid;
+            border:solid 1px;
+            
+        }
+        
+        #comm thead tr{
+            background-color: #FFC857;
+            
+        }
+        
+        #comm td{
+            border:solid 1px;
+            width:80px;
+            text-align: center;
+            height:50px;
+        }
+        /*價錢*/
+        .short{
+          width:60px;
+        }
+        .long{
+          width:120px;
+        }
+
+        #comm td div{
+          /*多的隱藏然後.......*/
+            
+            text-overflow: ellipsis; 
+            overflow:hidden;
+            width:100%;
+        }
+
+
+        /*修改那欄*/
+        #comm th:first-child{
+          width:60px; 
+        }
+
+
+
+        #del{
+            width:30px;
+            height:30px;
+        }
+        #addcomm {
+            margin:auto;
+             width:100px;
+            height:40px;
+            margin-bottom:10px;  
+        }
+        #addcomm button{
+            width:100px;
+            height:40px;
+        }
+        
+		#add{
+			width: 300px;
+			height:500px;
+			position:absolute;
+			top:50px;
+			margin-right: -150px;
+			right:50%;
+			display: none;
+			z-index:999;
+      overflow-y: scroll;
+      
+      
+		}
+		
+		
+		
+    	.text { 
+			margin-bottom:12px; 
+			width:95%; 
+			padding: .4em; 
+			display:block; 
+		}
+
+    .other{
+      margin-top:5px;  
+      display:block; 
+      font-size:14px;
+      display: inline-block;
+    }
+    
+    #create-user{
+      border-radius: 8px;
+      background-color: #555555 ;
+      color: white; 
+    }
+
+    #add div:first-child{
+      
+      position: relative;
+      width:100%;
+      display: block;
+      text-align: center;
+    }
+    fieldset{
+      border-radius: 20px;
+      background-color:aliceblue;
+
+    }
+    #upda{
+      border-radius: 4px;
+      background-color: #e7e7e7;
+      color:#000000;
+      font-size: 16px;  
+    
+    }
+    .btn{
+      border-radius: 4px;
+      background-color: #e7e7e7;
+      color:#000000;
+      font-size: 16px;
+      margin-right:20px;
+       margin-left:50px;    
+    }
+
+        .btn{
+     
+      background-color: #e7e7e7;
+      color:#000000;
+    
+    }
+
+    #upda:hover{
+      background-color: #E5446D;
+      color:white;
+    }
+
+
+/* 以下為checkbox樣式 */
+  .check-switch {
+  /* // 清除原有樣式 */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /* // 清除元素外邊款輪廓線 */
+  outline: none; 
+  /* // 設置具備區塊元素屬性 */
+  display: inline-block;
+  /* // 按鈕設置爲手型 */
+  cursor:pointer;
+  /* // 設置寬度 */
+  width: 39px;
+  /* // 設置高度 */
+  height: 20px;
+  position: relative;
+  top:10px;
+  /* // 邊框 */
+  border: 1px solid red;
+  /* // 背景 */
+  background-color: red;
+  /* // 設置陰影效果 */
+  box-shadow: red 0 0 0 0 inset;
+  /* // 圓角 */
+  border-radius: 20px;
+  /* // 設置背景的繪製區域 */
+  background-clip: content-box;
+
+}
+/* // 中間圓圈樣式 */
+.check-switch:before {
+
+    /* // content 屬性與 :before 及 :after 僞元素配合使用，來插入生成內容。 */
+    /* // 此元素值爲'' ,但是必須存在，否則將不顯示中間那個圓圈 */
+    content: '';
+    width: 17px;
+    height: 17px;
+    /* // 脫離文檔流 */
+    position: absolute;
+    /* // 設置位置 */
+    top: 0px;
+    left: 0;
+    /* // 圓角 */
+    border-radius: 20px;
+    /* // 顏色 */
+    background-color: #fff;
+    /* // 陰影效果 */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); 
+}
+/* //checkbox元素被選中時的樣式 */
+.check-switch:checked {
+    /* // 邊框顏色 */
+    border-color: green;
+    /* // 選中後的陰影效果 */
+    box-shadow: green 0 0 0 16px inset;
+    /* // 選中後的北京色 */
+    background-color: green; 
+}
+ /* 在checkbox選中後，中間圓圈的便宜位置 */
+.check-switch:checked:before {
+  left: 21px; 
+}
+ /* 增加動畫效果 */
+.check-switch-anim {
+    transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s; 
+}
+.check-switch-anim:before {
+      transition: left 0.3s; 
+}
+.check-switch-anim:checked {
+      box-shadow: green 0 0 0 16px inset;
+      background-color: green;
+      transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s; 
+}
+.check-switch-anim:checked:before {
+        transition: left 0.3s;
+}
+        
+    </style>
+    
+</head>
+<body>
+              <div id="addcomm"><button id="create-user">商品上架</button></div>
+               <form>
+                <div>
+                    <table id="comm" >
+                        <thead>
+                            <tr>
+                                <th scope="col" >&nbsp;</th>
+                                <th scope="col" class="short">圖片</th>
+                                <th scope="col" class="long">商品名稱</th>
+                                <th scope="col" class="short" >售價</th>
+                                <th scope="col" class="short" >數量</th>
+                                <th scope="col">商品詳情</th>
+                                <th scope="col">適合年齡</th>
+                                <th scope="col">建議人數</th>
+                                <th scope="col">遊戲類型</th>
+                                <th scope="col">上架狀態</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                 <input id="upda" type="submit" value="修改">
+                                </th>
+                                <td><img src alt="商品圖片"></td>
+                                <td class="long">阿瓦隆阿瓦隆阿瓦隆阿瓦隆阿瓦隆</td>
+                                <td class="short">1000</td>
+                                <td class="short">200</td>
+                                <td><div>sadasdasdasdasdasdasdasddsdsfdsfdsfsdfdsfsadsadasd</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                 <input id="upda" type="submit" value="修改">
+                                </th>
+                                <td><img src alt="商品圖片"></td>
+                                <td class="long">阿瓦隆阿瓦隆阿瓦隆阿瓦隆阿瓦隆</td>
+                                <td class="short">1000</td>
+                                <td class="short">200</td>
+                                <td><div>sadasdasdasdasdasdasdasddsdsfdsfdsfsdfdsfsadsadasd</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                                                        <tr>
+                                <th scope="row">
+                                 <input id="upda" type="submit" value="修改">
+                                </th>
+                                <td><img src alt="商品圖片"></td>
+                                <td class="long">阿瓦隆阿瓦隆阿瓦隆阿瓦隆阿瓦隆</td>
+                                <td class="short">1000</td>
+                                <td class="short">200</td>
+                                <td><div>sadasdasdasdasdasdasdasddsdsfdsfdsfsdfdsfsadsadasd</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                                                        <tr>
+                                <th scope="row">
+                                 <input id="upda" type="submit" value="修改">
+                                </th>
+                                <td><img src alt="商品圖片"></td>
+                                <td class="long">阿瓦隆阿瓦隆阿瓦隆阿瓦隆阿瓦隆</td>
+                                <td class="short">1000</td>
+                                <td class="short">200</td>
+                                <td><div>sadasdasdasdasdasdasdasddsdsfdsfdsfsdfdsfsadsadasd</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                                                        <tr>
+                                <th scope="row">
+                                 <input id="upda" type="submit" value="修改">
+                                </th>
+                                <td><img src alt="商品圖片"></td>
+                                <td class="long">阿瓦隆阿瓦隆阿瓦隆阿瓦隆阿瓦隆</td>
+                                <td class="short">1000</td>
+                                <td class="short">200</td>
+                                <td><div>sadasdasdasdasdasdasdasddsdsfdsfdsfsdfdsfsadsadasd</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                                                        <tr>
+                                <th scope="row">
+                                 <input id="upda" type="submit" value="修改">
+                                </th>
+                                <td><img src alt="商品圖片"></td>
+                                <td class="long">阿瓦隆阿瓦隆阿瓦隆阿瓦隆阿瓦隆</td>
+                                <td class="short">1000</td>
+                                <td class="short">200</td>
+                                <td><div>sadasdasdasdasdasdasdasddsdsfdsfdsfsdfdsfsadsadasd</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+             
+                        </tbody>
+                    </table>
+                </div>  
+        </form>
+              
+              
+               
+        <div id="add" title="哈哈哈">
+          
+          <form method="post" >
+            <fieldset>
+              <div>--新增商品--</div>
+              <label for="name">商品名稱:</label>
+              <input type="text" class="text">
+              
+              <label for="price">售價:</label>
+              <input type="text" class="text">
+              
+              <label for="password">數量:</label>
+              <input type="text" class="text">
+              
+              <label for="password">商品介紹</label>
+			        <textarea cols="32" rows="5" class="text" style="resize:none;"></textarea>
+
+			          <label class="other">建議年齡:
+                <select>
+                <option value="0">普遍級</option>
+                <option value="saab">輔導級</option>
+                <option value="opel">限制級</option>
+                <option value="audi">Audi</option>
+                </select>
+                </label>
+                
+              <label class="other">建議人數:
+              <select>
+                <option value="0">普遍級</option>
+                <option value="saab">輔導級</option>
+                <option value="opel">限制級</option>
+                <option value="audi">Audi</option>
+              </select>
+              </label>  
+
+              <label class="other">遊戲類型:
+              <select>
+                <option value="0">普遍級</option>
+                <option value="saab">輔導級</option>
+                <option value="opel">限制級</option>
+                <option value="audi">Audi</option>
+              </select>
+				<label class="other">上下架狀態:
+				下架<input type="checkbox" class="check-switch check-switch-anim" name="status" checked> 上架
+				</label>
+
+              </label>  
+              <label class="other">上傳商品圖片:<input type="file" name="img" id="upload"></label>
+              <div id="show"></div>
+              <input type="submit" value="新增" class="btn"><button class="btn" type="button" id="cancel">取消</button>
+              
+            </fieldset>
+          </form>
+        </div>               
+         
+<script>
+  var reader = new FileReader();
+	$(document).ready(function(){
+		$("#create-user").click(function(){
+      $("#comm").css({"opacity":"0.5"});
+			$("#add").slideDown();
+      $("#show").append("<img>");
+      $("#create-user").attr('disabled',true);
+      $("#comm td div").off();
+		});
+
+    $("#upload").change(function(){
+      var myfile = this.files;
+      $(reader).on("load",function(e){
+        $("#show img").css({"width" : "250" , "height" :"250px"});
+          $("#show img").attr("src",e.target.result);
+        });
+      reader.readAsDataURL(myfile[0]);
+    }); 
+
+    $("#cancel").click(function(){
+      $("#add, #add form").animate({ scrollTop: 0 }, "fast");
+      $("#add").slideUp();
+      $(".text").val("");
+      $(".other input").val("");
+      $(".other select").val("0");;
+      $("#show img").remove();
+      $("#create-user").attr('disabled',false);
+      $("#comm").css({"opacity":"1"});
+      setTimeout(hov,500);
+    })
+    hov();
+    function hov(){
+      $("#comm td div").hover(function(){
+            $(this).css({"color":"blue"});
+            $("#comm").css({"opacity":"0.3"});
+            let intro =document.createElement("div");
+            $(intro).attr({"id":"introshow"});
+            $(intro).text($(this).text());
+            $(intro).css({"position":"absolute","width":"200px","height":"200px",
+              "top":"30%","background-color":"#ffffff","word-break": "break-all",
+              "word-wrap": "break-word","margin-left": "-100px","font-size": "24px",
+              "left":"50%"}
+             );
+            $("body").prepend(intro);
+      },function(){
+            $(this).css({"color":"block"});
+            $("#comm").css({"opacity":"1"});
+            $(this).css({"color":"#000000"});
+            $("#introshow").remove();
+
+        })
+      }
+           
+           
+           
+        
+		
+	});
+	
+  </script>       
+                              
+</body>
+</html>
+   
